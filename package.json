@@ -1,0 +1,32 @@
+{
+  "name": "changetheworld",
+  "version": "1.0.0",
+  "description": "Dynamic Background Image Changer via Twitch Chat using Pexels API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/instafluff/ChangeTheWorld.git"
+  },
+  "keywords": [
+    "Instafluff",
+    "Images",
+    "Pexels",
+    "API",
+    "Dynamic",
+    "Twitch",
+    "chat",
+    "overlay"
+  ],
+  "author": "Instafluff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/instafluff/ChangeTheWorld/issues"
+  },
+  "homepage": "https://github.com/instafluff/ChangeTheWorld#readme",
+  "dependencies": {
+    "webwebweb": "^1.4.10"
+  }
+}

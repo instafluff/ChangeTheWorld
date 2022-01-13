@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+		<style>
+		html, body {
+			background-color: #000;
+			padding: 0;
+			margin: 0;
+			width: 100vw;
+			height: 100vh;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center;
+		}
+		</style>
+    </head>
+    <body id="backdrop">
+        <script>
+            function getRandomInt( num ) {
+                return Math.floor( Math.random() * num );
+            }
+
+            const params = new URLSearchParams( location.search );
+            const apiKey = params.get( "api" ) || "GET_API_KEY_AT_PEXELS"; // https://www.pexels.com/api/new/
+            // const oauth = params.get( "oauth" ) || "GET_TWITCH_OAUTH"; // twitch things TODO
+            const channel = params.get( "channel" );
+            const pexelsUrl = "https://api.pexels.com/v1/";
+            async function callPexelsAPI( api ) {
+                return await fetch( `${pexelsUrl}${api}`, {
+                    headers: {
+                        "Authorization": apiKey
+                    }
+                }).then( r => r.json() );
+            }
+
+            async function setBackgroundImage( query ) {
+                let result = await callPexelsAPI( `search?query=${query}` );
+                // console.log( result );
+                const images = result.photos;
+                const index = getRandomInt( images.length );
+                let url = images[ index ].src.original;
+                let thumbnail = images[ index ].src.large2x;
+                document.getElementById( "backdrop" ).style.backgroundImage = `url(${thumbnail})`;
+            }
+
+            setBackgroundImage( "snow" );
+
+            ComfyJS.onCommand = async ( user, command, message, flags, extra ) => {
+                if( command === "background" ) {
+                    setBackgroundImage( message );
+                }
+            }
+            ComfyJS.Init( channel );
+        </script>
+    </body>
+</html>
