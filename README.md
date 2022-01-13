@@ -23,4 +23,4 @@ Get a Pexels API Key at [https://www.pexels.com/api/new/](https://www.pexels.com
 
 Then add this as a Browser Source and replace `yourchannel` with your Twitch username!
 
-[https://www.instafluff.tv/ChangeTheWorld?channel=yourchannel&api=yourapikey](https://www.instafluff.tv/ReadGood?channel=yourchannel&api=yourapikey)
+[https://www.instafluff.tv/ChangeTheWorld?channel=yourchannel&api=yourapikey](https://www.instafluff.tv/ChangeTheWorld?channel=yourchannel&api=yourapikey)
