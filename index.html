@@ -13,6 +13,9 @@
 			background-attachment: fixed;
 			background-position: center;
 		}
+        /* body {
+            filter: sepia(100%);
+        } */
 		</style>
     </head>
     <body id="backdrop">
@@ -41,7 +44,11 @@
                 const index = getRandomInt( images.length );
                 let url = images[ index ].src.original;
                 let thumbnail = images[ index ].src.large2x;
-                document.getElementById( "backdrop" ).style.backgroundImage = `url(${thumbnail})`;
+                let img = new Image(); 
+                img.onload = function() { 
+                    document.getElementById( "backdrop" ).style.backgroundImage = `url(${thumbnail})`;
+                } 
+                img.src = thumbnail;
             }
 
             setBackgroundImage( "snow" );
@@ -49,6 +56,9 @@
             ComfyJS.onCommand = async ( user, command, message, flags, extra ) => {
                 if( command === "background" ) {
                     setBackgroundImage( message );
+                }
+                if( command === "resetbg" ) {
+                    location.reload();
                 }
             }
             ComfyJS.Init( channel );
